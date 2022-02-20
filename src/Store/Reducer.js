@@ -1,4 +1,4 @@
-import {CHANGE_VALUE, ADD_VALUE, OPEN_MODAL, CLOSE_MODAL, DEL_MODAL, DEL_ITEM, EDIT_ITEM, CHANGE_VAL, SAVE_ITEM} from './Actions'
+import {CHANGE_VALUE, ADD_VALUE, OPEN_MODAL, CLOSE_MODAL, DEL_MODAL, DEL_ITEM, EDIT_ITEM, CHANGE_VAL, SAVE_EDIT_TEXT} from './Actions'
 
 const initalState = {
     text: '',
@@ -27,6 +27,12 @@ export const Reducer = (state = initalState, action) => {
             return{...state, isOpen:false}   
         case  EDIT_ITEM:
             return {...state,modalContent:action.payload} 
+        case CHANGE_VAL:
+            
+            return {...state, newText:action.payload}
+        case SAVE_EDIT_TEXT:
+            
+            return{...state, List:action.payload}     
                    
         default:
             return state

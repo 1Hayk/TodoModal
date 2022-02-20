@@ -7,6 +7,7 @@ export const EDIT_ITEM = "EDIT_ITEM"
 export const CHANGE_VAL = "CHANGE_VAL"
 export const SAVE_ITEM = 'SAVE_ITEM'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const SAVE_EDIT_TEXT = 'SAVE_EDIT_TEXT'
 
 
 export const changeInputValue = (payload) => {
@@ -58,12 +59,13 @@ export const changeVal = (payload) => {
         payload
     }
 }
-export const saveModalItem = (payload) => {
+export const saveEditText = (payload) => {
     return {
-        type:SAVE_ITEM,
+        type:SAVE_EDIT_TEXT,
         payload
     }
 }
+
 export const closeModal = () => {
     return {
         type: CLOSE_MODAL

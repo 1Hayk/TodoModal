@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { closeModal, delItem, changeVal, saveModalItem } from '../../Store/Actions';
+import { closeModal, delItem, changeVal, saveEditText } from '../../Store/Actions';
 
 
 export const TodoListModal = () => {
@@ -33,12 +33,19 @@ export const TodoListModal = () => {
         
         close()
       }
-      const change = (newText) => {
-        dispatch(changeVal(newText))
-        console.log(newText);
-      }
-      const save = () => {
+      const change = (value) => {
+        dispatch(changeVal(value))
         
+      }
+
+
+
+      const save = (id) => {
+        const item = List[id - 1]
+        item.text = newText
+       dispatch(saveEditText(List))
+       close()
+       
       }
 
 
@@ -59,7 +66,7 @@ export const TodoListModal = () => {
       modalContent.type === 'delete' ? <div><button onClick={() => dell(modalContent.id)} >Delete</button>
       <button onClick={close}>cancel</button> </div>:
       <div>
-        <textarea name="" id="" cols="30" rows="10" onChange={(e) => change(e.target.value)}>{modalContent.text}</textarea>
+        <textarea defaultValue={modalContent.text} cols="30" rows="10" onChange={(e) => change(e.target.value)}/>
         <button onClick={() => save(modalContent.id)} >Save</button>
        
         <button onClick={close}>Cancel</button>
